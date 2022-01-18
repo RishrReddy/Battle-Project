@@ -4,20 +4,24 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import BattleProject.Axe;
-import BattleProject.BattlePlayers;
-import BattleProject.Belt;
-import BattleProject.Footwear;
-import BattleProject.Gear;
-import BattleProject.HeadGear;
-import BattleProject.Player;
-import BattleProject.Potion;
-import BattleProject.RandomNumberGenerateTest;
-import BattleProject.RandomNumbersGenerator;
-import BattleProject.Weapon;
+import battle.Axe;
+import battle.BattlePlayers;
+import battle.Belt;
+import battle.Footwear;
+import battle.Gear;
+import battle.HeadGear;
+import battle.Player;
+import battle.Potion;
+import battle.RandomNumberGenerateTest;
+import battle.RandomNumbersGenerator;
+import battle.Weapon;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * PLayerTest class represents all the test cases related ta a player object and
+ * other methods implemented from the BattlePLayers class.
+ */
 public class PlayerTest {
 
   BattlePlayers player1;
@@ -54,7 +58,7 @@ public class PlayerTest {
   }
 
   /**
-   * Unit test for checking if getPlayerName returns accurate playerName
+   * Unit test for checking if getPlayerName returns accurate playerName.
    */
   @Test
   public void getPlayerNameTest() {
@@ -62,7 +66,7 @@ public class PlayerTest {
   }
 
   /**
-   * Unit test for checking if getPlayerConstitution returns accurate constitution value
+   * Unit test for checking if getPlayerConstitution returns accurate constitution value.
    * when random integer is 2/3/4
    * when 2 is passed as the random value to RandomNumberGenerateTest object the
    * dice roll would give 2,2,2,2 so the constitution should be 6
@@ -81,7 +85,7 @@ public class PlayerTest {
   }
 
   /**
-   * Unit test for checking if getPlayerDexterity() returns accurate dexterity value
+   * Unit test for checking if getPlayerDexterity() returns accurate dexterity value.
    * when random integer is 2/3/4
    * when 2 is passed as the random value to RandomNumberGenerateTest object the
    * dice roll would give 2,2,2,2 so the dexterity should be 6
@@ -100,7 +104,7 @@ public class PlayerTest {
   }
 
   /**
-   * Unit test for checking if getPlayerHealth() returns accurate health value
+   * Unit test for checking if getPlayerHealth() returns accurate health value.
    * when random integer is 2/3/4
    * when 2 is passed as the random value to RandomNumberGenerateTest object the
    * constitution = 6, dexterity = 6, strength = 6 , charisma = 6 so health = 24
@@ -119,7 +123,7 @@ public class PlayerTest {
   }
 
   /**
-   * Unit test for checking if getPlayerCharisma() returns accurate Charisma value
+   * Unit test for checking if getPlayerCharisma() returns accurate Charisma value.
    * when random integer is 2/3/4
    * when 2 is passed as the random value to RandomNumberGenerateTest object the
    * dice roll would give 2,2,2,2 so the Charisma should be 6
@@ -138,7 +142,7 @@ public class PlayerTest {
   }
 
   /**
-   * Unit test for checking if getPlayerStrength() returns accurate Strength value
+   * Unit test for checking if getPlayerStrength() returns accurate Strength value.
    * when random integer is 2/3/4
    * when 2 is passed as the random value to RandomNumberGenerateTest object the
    * dice roll would give 2,2,2,2 so the Strength should be 6
@@ -199,9 +203,12 @@ public class PlayerTest {
    */
   @Test
   public void getPlayerGear() {
-    HeadGear headGear = new HeadGear("Headgear", new RandomNumberGenerateTest(4).getRandomNumber(1, 6));
-    Footwear footwear = new Footwear("footwear", new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
-    Belt belt = new Belt("Belt", new RandomNumberGenerateTest(3).getRandomNumber(1, 6), new RandomNumberGenerateTest(2).getRandomNumber(1, 3));
+    HeadGear headGear = new HeadGear("Headgear",
+            new RandomNumberGenerateTest(4).getRandomNumber(1, 6));
+    Footwear footwear = new Footwear("footwear",
+            new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
+    Belt belt = new Belt("Belt", new RandomNumberGenerateTest(3)
+            .getRandomNumber(1, 6), new RandomNumberGenerateTest(2).getRandomNumber(1, 3));
     Potion potion = new Potion("footwear", new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
     List<Gear> gearList = new ArrayList<>();
     gearList.add(headGear);
@@ -227,7 +234,8 @@ public class PlayerTest {
     Belt belt = new Belt("Belt",
             new RandomNumberGenerateTest(3).getRandomNumber(1, 6),
             new RandomNumberGenerateTest(2).getRandomNumber(1, 3));
-    Potion potion = new Potion("Potion", new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
+    Potion potion = new Potion("Potion",
+            new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
     List<Gear> gearList = new ArrayList<>();
     gearList.add(headGear);
     gearList.add(footwear);
@@ -236,10 +244,10 @@ public class PlayerTest {
     for (Gear g : gearList) {
       pForGearList.updatePlayerGear(g);
     }
-    assertEquals("Gear Name is : Headgear Gear power is : 4\n" +
-            "Gear Name is : footwear Gear power is : 3\n" +
-            "Gear Name is : Belt Gear power is : 3\n" +
-            "Gear Name is : Potion Gear power is : 3\n", pForGearList.toStringGear());
+    assertEquals("Gear Name is : Headgear Gear power is : 4\n"
+            + "Gear Name is : footwear Gear power is : 3\n"
+            + "Gear Name is : Belt Gear power is : 3\n"
+            + "Gear Name is : Potion Gear power is : 3\n", pForGearList.toStringGear());
   }
 
   /**
@@ -262,17 +270,23 @@ public class PlayerTest {
    */
   @Test
   public void testToString() {
-    assertEquals("Player Name is : xyz Constitution: 9 Charisma: 9 Strength: 9 Dexterity: 9 Health: 36 Avoidance Ability: 0 Striking Power: 0", pForGearList.toString());
+    assertEquals("Player Name is : xyz Constitution: 9 Charisma: "
+            + "9 Strength: 9 Dexterity: 9 Health:"
+            + " 36 Avoidance Ability: 0 Striking Power: 0", pForGearList.toString());
     pForGearList.setBattleAbilities(10, 20);
-    assertEquals("Player Name is : xyz Constitution: 9 Charisma: 9 Strength: 9 Dexterity: 9 Health: 36 Avoidance Ability: 20 Striking Power: 10", pForGearList.toString());
+    assertEquals("Player Name is : xyz Constitution: "
+            + "9 Charisma: 9 Strength: 9 Dexterity:"
+            + " 9 Health: 36 Avoidance Ability: 20 Striking Power: 10", pForGearList.toString());
   }
 
   /**
-   * Unit test for toStringBasicAbilities() for checking if it prints the player's name alone with basin 4 abilities.
+   * Unit test for toStringBasicAbilities() for checking if it prints
+   * the player's name alone with basin 4 abilities.
    */
   @Test
   public void toStringBasicAbilities() {
-    assertEquals("Player Name is : xyz Constitution: 9 Charisma: 9 Strength: 9 Dexterity: 9\n", pForGearList.toStringBasicAbilities());
+    assertEquals("Player Name is : xyz Constitution: "
+            + "9 Charisma: 9 Strength: 9 Dexterity: 9\n", pForGearList.toStringBasicAbilities());
   }
 
   /**
@@ -330,10 +344,14 @@ public class PlayerTest {
   @Test
   public void refreshGears() {
     BattlePlayers p1 = new Player("player1", new RandomNumberGenerateTest(2));
-    HeadGear headGear = new HeadGear("Headgear", new RandomNumberGenerateTest(4).getRandomNumber(1, 6));
-    Footwear footwear = new Footwear("footwear", new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
-    Belt belt = new Belt("Belt", new RandomNumberGenerateTest(3).getRandomNumber(1, 6), new RandomNumberGenerateTest(2).getRandomNumber(1, 3));
-    Potion potion = new Potion("Potion", new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
+    HeadGear headGear = new HeadGear("Headgear",
+            new RandomNumberGenerateTest(4).getRandomNumber(1, 6));
+    Footwear footwear = new Footwear("footwear",
+            new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
+    Belt belt = new Belt("Belt", new RandomNumberGenerateTest(3).getRandomNumber(1, 6),
+            new RandomNumberGenerateTest(2).getRandomNumber(1, 3));
+    Potion potion = new Potion("Potion",
+            new RandomNumberGenerateTest(3).getRandomNumber(1, 6));
     List<Gear> gearList = new ArrayList<>();
     gearList.add(headGear);
     gearList.add(footwear);
